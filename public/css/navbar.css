@@ -1,0 +1,79 @@
+body{
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+#quote{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    transform: translate(-50%,-50%);
+    color: #DC3545;
+}
+#phrase{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+    .search-box{
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+       .search{
+       position: absolute;
+       top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+       width: 50vw;
+       }
+
+       .search input{
+     
+        height: 60px;
+        text-indent: 25px;
+        border: 1px solid blac;
+
+
+       }
+
+
+       .search input:focus{
+        box-shadow: none;
+        border: 1px solid blac;
+
+       }
+
+       .search .fa-search{
+        color:white;
+       
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+  
+       }
+
+       .search button{
+        position: absolute;
+        background-color: #DC3545;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 5vw;
+        
+       }
+       .search .fa-search:hover{
+        color: white;
+       }

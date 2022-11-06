@@ -1,0 +1,52 @@
+<% layout('/layout/template') %> 
+<div class="row">
+
+    <div class="row">
+        <h3 class="text-center"><strong>Edit Product</strong></h3>
+        <div class="col-6 offset-3">
+            <form action="/products/<%= product.id %>?_method=PUT" method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="name"><strong>Name</strong></label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image"><strong>Image URL</strong></label>
+                    <input class="form-control" type="text" id="image" name="image">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price"><strong>Price</strong></label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">₱</span>
+                        <input type="text" class="form-control" placeholder="0.00" aria-label="price" aria-describedby="price-label" id="price" name="price">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="bed"><strong>Bed</strong></label>
+                    <input class="form-control" type="Number" name="bed"></input>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="bath"><strong>Bath</strong></label>
+                    <input class="form-control" type="Number" name="bath"></input>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="sqft"><strong>Sqft</strong></label>
+                    <input class="form-control" type="number" id="sqft" name="sqft">
+                </div>
+                <div class="mb-3">
+                    <label for="category"><strong>Category</strong></label>
+                        <select class="form-select" name="category" aria-label="Default select example">
+                            <option value="luxury" >Luxury</option>
+                            <option value="affordable">Affordable</option>
+                          </select>
+                </div>             
+                <div class="mb-3">
+                    <label class="form-label" for="location"><strong>Location</strong></label>
+                    <input class="form-control" type="text" id="location" name="location">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Edit</button>
+                    <a class="btn btn-danger" href="/">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>

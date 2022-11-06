@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="/css/home.css">
+
+<%- layout('./layout/template') %> 
+       <section style="position:relative ;">
+            <section>
+              <h1 id="quote" class="container-fluid text-center"><strong>Going Above and Beyond To Find Your Next Home</strong></h1>
+              <h3 id="phrase">Search,See and Love
+
+              </h3>
+              <div class="search-box">
+
+                <div class="row height d-flex justify-content-center align-items-center">
+
+                  <div class="col-md-8">
+
+                    <div class="search">
+                      <input type="text" class="form-control" placeholder="Street,City,Province,Zip">
+                       <button class="btn btn-outline-danger"><i class="fa fa-search"></i></button>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+            </div>
+        </section>
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="z-index: -1;">
+            <div class="carousel-inner">
+             
+                <div class="carousel-item active" data-bs-interval="2000">
+                  <img src="https://images.unsplash.com/photo-1627141234469-24711efb373c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" class="d-block w-100" alt="...">
+                  
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                  <img src="https://cdn.shopify.com/s/files/1/2078/3829/files/IMG_5694_2048x.jpg?v=1538484167" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://res.cloudinary.com/porter-davis/image/upload/w_1200,q_auto:eco/pd-web/2020/12/Astor-54-Bentleigh2-scaled-2.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://www.loghouse.fi/wp-content/uploads/2021/04/tilly-suomalainen-hirsitalo-ulkokuva-590x350.jpg" class="d-block w-100" alt="...">
+              </div>
+          </div>
+        </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </section>
+
+
+<div class="d-flex flex-wrap justify-content-center">
+  <h4 class="container-fluid mt-5 mb-4"><strong>Homes around ₱ 30,000</strong></h4>
+ 
+        <% for(let product of products){%>
+                <div class="card mb-5 ms-3 me-3 " >
+                  <img src="<%=product.image%>" class="card-img-top w-100 h-50 rounded-3" alt="Luxury Homes" >
+                    <div class="card-body">
+                        <h5 class="card-title"><a class="card-link" href="/products/<%= product.id %>"><%=product.name%></a></h5>
+                        <h6 class="mt-1"><i class="fa-solid fa-peso-sign"></i> <%= product.price %></h6>
+                        <span class="d-flex flex-row p-0" >
+                        <p class="card-text mt-1 me-2"><strong><%= product.bed%></strong> Bed</p>
+                        <p class="card-text mt-1 me-2"><strong><%= product.bath%></strong> Bath</p>
+                        <p class="card-text mt-1 me-2"><strong><%= product.sqft%></strong> sqft</p>
+                        </span>    
+                        <a class="card-link mt-0 text-center" href="#" id="location"><i class="fa-solid fa-location-dot"></i> <%=product.location%></a>
+                    </div> 
+                </div>
+            
+        <%}%>  
+     
+    </div>
+
+
+<div class="d-flex flex-wrap justify-content-center">
+  <h4 class="container-fluid mt-5 mb-4"><strong>Newest Listings</strong></h4>
+  <% for(let product of products){%>
+          <div class="card mb-5 ms-2 me-2" >
+              <img src="<%=product.image%>" class="card-img-top w-100 h-50 rounded-3" id="img-src" alt="Luxury Homes" >
+              <div class="card-body">
+                  <h5 class="card-title"><a class="card-link" href="/products/<%= product.id %>"><%=product.name%></a></h5>
+                  <h6 class="mt-1"><i class="fa-solid fa-peso-sign"></i> <%= product.price %></h6>
+                  <span class="d-flex flex-row p-0" >
+                  <p class="card-text mt-1 me-2"><strong><%= product.bed%></strong> Bed</p>
+                  <p class="card-text mt-1 me-2"><strong><%= product.bath%></strong> Bath</p>
+                  <p class="card-text mt-1 me-2"><strong><%= product.sqft%></strong> sqft</p>
+                  </span>    
+                  <a class="card-link mt-0 text-center" href="#" id="location"><i class="fa-solid fa-location-dot"></i> <%=product.location%></a>
+              </div> 
+          </div>
+  <%}%>  
+</div>
+
+
+<div class="d-flex flex-wrap justify-content-center">
+<h4 class="container-fluid mt-5 mb-4"><strong>Affordable Homes</strong></h4>
+  <% for(let product of products){%>
+          <div class="card mb-5 ms-2 me-2 ">
+              <img src="<%=product.image%>" id="image-1" class="card-img-top w-100 h-50 rounded-3" alt="Luxury Homes" style="width: 100%;">
+              <div class="card-body">
+                  <h5 class="card-title"><a class="card-link" href="/products/<%= product.id %>"><%=product.name%></a></h5>
+                  <h6 class="mt-1"><i class="fa-solid fa-peso-sign"></i> <%= product.price %></h6>
+                  <span class="d-flex flex-row p-0" >
+                  <p class="card-text mt-1 me-2"><strong><%= product.bed%></strong> Bed</p>
+                  <p class="card-text mt-1 me-2"><strong><%= product.bath%></strong> Bath</p>
+                  <p class="card-text mt-1 me-2"><strong><%= product.sqft%></strong> sqft</p>
+                  </span>    
+                  <a class="card-link mt-0 text-center" href="#" id="location"><i class="fa-solid fa-location-dot"></i> <%=product.location%></a>
+              </div> 
+          </div>
+  <%}%> 
+</div>
+
+<h4 class="container-fluid mt-5 mb-4"><strong>Luxury Homes</strong></h4>
+<div class="d-flex flex-wrap justify-content-center">
+
+    <% for(let product of products){%>
+            <div class="card mb-5 ms-2 me-2">
+                <img src="<%=product.image%>" class="card-img-top w-100 h-50 rounded-3" alt="Luxury Homes" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title"><a class="card-link" href="/products/<%= product.id %>"><%=product.name%></a></h5>
+                    <h6 class="mt-1"><i class="fa-solid fa-peso-sign"></i> <%= product.price %></h6>
+                    <span class="d-flex flex-row p-0" >
+                    <p class="card-text mt-1 me-2"><strong><%= product.bed%></strong> Bed</p>
+                    <p class="card-text mt-1 me-2"><strong><%= product.bath%></strong> Bath</p>
+                    <p class="card-text mt-1 me-2"><strong><%= product.sqft%></strong> sqft</p>
+                    </span>    
+                    <a class="card-link mt-0 text-center" href="#" id="location"><i class="fa-solid fa-location-dot"></i> <%=product.location%></a>
+                </div> 
+             
+            </div>
+    <%}%>
+
+</div>
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Load Leaflet from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+<!-- Load geocoding plugin after Leaflet -->
+<link rel="stylesheet" href="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.css">
+<script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>
+
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+      margin: 0;
+  }
+  #map {
+      width: 100%;
+      height: 100%;
+    
+
+  }
+  #search-box {
+      padding-left: 20px;
+      padding-top: 20px;
+      width: 800px;
+      height: 100px;
+      border: 1px solid black;
+      z-index: 1;
+  }
+  #result {
+      padding-left: 20px;
+      padding-top: 20px;
+      width: 800px;
+      height: 100px;
+  }
+  .leaflet-locationiq-results{
+      padding-top: 45px;
+  }
+</style>
+<body>
+<!-- For the invisible map -->
+<div id="map"></div>
+<!-- For the search box -->
+<div id="search-box">
+  <input type="search">
+</div>
+<!-- To display the result -->
+<div id="result"></div>
+<script>
+// Initialize an empty map without layers (invisible map)
+var map = L.map('map', {
+    center: [40.7259, -73.9805], // Map loads with this location as center
+    zoom: 12,
+    scrollWheelZoom: true,
+    zoomControl: false,
+    attributionControl: false,
+});
+//Geocoder options
+var geocoderControlOptions = {
+    bounds: true,          //To not send viewbox
+    markers: true,         //To not add markers when we geocoder
+    attribution: null,      //No need of attribution since we are not using maps
+    expanded: true,         //The geocoder search box will be initialized in expanded mode
+    panToPoint: false       //Since no maps, no need to pan the map to the geocoded-selected location
+}
+// Searching nearby [50.5, 30.5]
+L.control.geocoder('pk.a2adaf20e6517ee0c424a5cc32cc3c89', {
+  focus: [50.5, 30.5], // this can also written as {lat: 50.5, lon: 30.5} or L.latLng(50.5, 30.5)
+  placeholder: 'Search nearby [50.5, 30.5]'
+}).addTo(map);
+
+// Taking just the center of the map (lat/lon) into account
+L.control.geocoder('pk.a2adaf20e6517ee0c424a5cc32cc3c89', {
+  focus: true,
+  placeholder: 'Search nearby'
+}).addTo(map);
+
+// Custom filtering parameters
+// For a full list of params, read the [documentation](https://locationiq.com/docs)
+L.control.geocoder('pk.a2adaf20e6517ee0c424a5cc32cc3c89', {
+  params: {
+    bounded: 1,
+    countrycodes: 'IN,US'
+  },
+  placeholder: 'Results via Who’s on First in Australia'
+}).addTo(map);
+//Initialize the geocoder
+var geocoderControl = new L.control.geocoder('pk.a2adaf20e6517ee0c424a5cc32cc3c89', geocoderControlOptions).addTo(map).on('select', function (e) {
+    displayLatLon(e.feature.feature.display_name, e.latlng.lat, e.latlng.lng);
+});
+</script>
+</body>
+</html>
